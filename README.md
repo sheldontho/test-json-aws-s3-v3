@@ -2,6 +2,10 @@
 
 > Read `json` file from AWS S3 using **JS SDK v3**
 
+```yml
+GET http://localhost:8270/api/testjson/getdata
+```
+
 ### **Postman Result is as below:**
 
 ![Postman Result](screenshot_postman.png)
