@@ -1,0 +1,15 @@
+{
+  // @author Sheldon T.
+  // @email sheldoontho@gmail.com
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Drape Fit New Server",
+      "runtimeVersion": "18.12.0",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${workspaceFolder}\\server.js"
+    }
+  ]
+}
