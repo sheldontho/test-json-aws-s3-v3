@@ -7,7 +7,7 @@ import { genUsername } from '../utils/helper.js';
 import { checkS3Bucket } from '../libs/checkS3Bucket.js';
 import { createS3Bucket } from '../libs/createS3Bucket.js';
 import { addS3BucketCorsRules } from '../libs/addS3BucketCorsRules.js';
-import { addS3BucketPolicy } from '../libs/addS3BucketPolicy.js';
+// import { addS3BucketPolicy } from '../libs/addS3BucketPolicy.js';
 
 const initDB = async () => {
   try {
@@ -42,7 +42,8 @@ const initDB = async () => {
 
 const initS3 = async () => {
   try {
-    if (process.env.NODE_ENV === 'production') {
+    // if (process.env.NODE_ENV === 'production') {
+    if (process.env.NODE_ENV === 'development') {
       const bucket = process.env.S3_BUCKET_NAME;
       if ((await checkS3Bucket(bucket)) !== true) {
         if ((await createS3Bucket(bucket)) !== true) {
@@ -57,10 +58,11 @@ const initS3 = async () => {
         );
         return;
       }
-      if ((await addS3BucketPolicy(bucket)) !== true) {
-        console.log('BOOT_initS3_ERROR:', 'Failed to Add Policy to S3 Bucket');
-        return;
-      }
+      //-- this will make bucket public
+      // if ((await addS3BucketPolicy(bucket)) !== true) {
+      //   console.log('BOOT_initS3_ERROR:', 'Failed to Add Policy to S3 Bucket');
+      //   return;
+      // }
       console.log('BOOT_initS3:', 'S3 Bucket is configured');
     }
   } catch (err) {

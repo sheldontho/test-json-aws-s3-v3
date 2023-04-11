@@ -6,7 +6,6 @@ import express from 'express';
 
 import { validate } from '../middleware/validateMdware.js';
 import { signupRules, loginRules } from '../middleware/validateAuthMdware.js';
-import { protect } from '../middleware/authMdware.js';
 import * as userCtrl from '../controllers/userCtrl.js';
 
 const router = express.Router();
@@ -26,21 +25,5 @@ router.post('/signup', signupRules(), validate, userCtrl.signupUser);
  * @desc Login user
  */
 router.post('/login', loginRules(), validate, userCtrl.loginUser);
-
-/**
- * @method POST
- * @route api/user/logout
- * @access private
- * @desc Logout user by destroying token
- */
-router.route('/logout').post(protect, userCtrl.logoutUser);
-
-/**
- * @method POST
- * @route api/user/logout/strict
- * @access private
- * @desc Logout user strictly by removing all the tokens
- */
-router.route('/logout/strict').post(protect, userCtrl.strictLogoutUser);
 
 export default router;

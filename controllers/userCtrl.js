@@ -3,17 +3,9 @@
  * @email sheldoontho@gmail.com
  */
 import asyncHandler from 'express-async-handler';
-const { createHmac, createHash } = await import('node:crypto');
-import converter from 'number-to-words';
-import bcrypt from 'bcryptjs';
 
 import User from '../models/userModel.js';
-import UserSignToken from '../models/userSignTokenModel.js';
-import {
-  chkEmailVeriToken,
-  genUsername,
-  isValidEmailVeriTokenTTL
-} from '../utils/helper.js';
+import { genUsername } from '../utils/helper.js';
 
 const signupUser = asyncHandler(async (req, res) => {
   try {
@@ -85,39 +77,4 @@ const loginUser = asyncHandler(async (req, res) => {
   }
 });
 
-const logoutUser = asyncHandler(async (req, res) => {
-  try {
-    //-- `req.user` & `req.token` was set in [authMdware.js]
-    req.user.tokens = req.user.tokens.filter((token) => {
-      return token.token !== req.token;
-    });
-    await req.user.save();
-    //-- okay
-    console.log('API_logoutUser_200:', 'User has been logged out');
-    res.status(200).send('User has been logged out');
-  } catch (e) {
-    console.log('API_logoutUser_500:', e);
-    res.status(500);
-    throw new Error('Internal error occurred');
-  }
-});
-
-const strictLogoutUser = asyncHandler(async (req, res) => {
-  try {
-    //-- `req.user` was set in [authMdware.js]
-    req.user.tokens = [];
-    await req.user.save();
-    //-- okay
-    console.log(
-      'API_strictLogoutUser_200:',
-      'User has been strictly logged out'
-    );
-    res.status(200).send('User has been strictly logged out');
-  } catch (e) {
-    console.log('API_strictLogoutUser_500:', e);
-    res.status(500);
-    throw new Error('Internal error occurred');
-  }
-});
-
-export { signupUser, loginUser, logoutUser, strictLogoutUser };
+export { signupUser, loginUser };
