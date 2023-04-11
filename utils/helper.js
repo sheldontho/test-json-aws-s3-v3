@@ -13,4 +13,17 @@ const genUsername = (firstname, lastname) => {
   }
 };
 
-export { genUsername };
+const streamToString = (stream) =>
+  new Promise((resolve, reject) => {
+    try {
+      const chunks = [];
+      stream.on('data', (chunk) => chunks.push(chunk));
+      stream.on('error', reject);
+      stream.on('end', () => resolve(Buffer.concat(chunks).toString('utf8')));
+    } catch (e) {
+      console.log('UTILS_streamToString_ERROR:', e);
+      reject;
+    }
+  });
+
+export { genUsername, streamToString };

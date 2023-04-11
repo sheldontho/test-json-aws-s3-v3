@@ -12,6 +12,7 @@ import mongoSanitize from 'express-mongo-sanitize';
 import connectDB from './config/db.js';
 import { initDB, initS3 } from './boot/init.js';
 import userRoutes from './routes/userRoutes.js';
+import testJsonRoutes from './routes/testJsonRoutes.js';
 import { errorHandler, notFound } from './middleware/errorMdware.js';
 
 const __dirname = path.resolve();
@@ -56,8 +57,9 @@ app.use(
   })
 );
 
-//// REST API routes | ※ custom routing prefix 4 security
+//// REST API routes
 app.use('/api/user', userRoutes);
+app.use('/api/testjson', testJsonRoutes);
 
 //// Middleware for error handling
 app.use(notFound);
