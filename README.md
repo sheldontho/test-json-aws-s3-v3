@@ -39,6 +39,45 @@
 }
 ```
 
+---
+
+### **AWS Credentials by Files**
+
+> This is necessary for **AWS JavaScript SDK** integration.
+
+- **`~/.aws/credentials`**
+  ```yaml
+  [default]
+  aws_access_key_id=YOUR_AWS_ACCESS_KEY_ID
+  aws_secret_access_key=YOUR_AWS_SECRET_ACCESS_KEY
+  ```
+- **`~/.aws/config`**
+  ```yaml
+  [default]
+  aws_access_key_id=YOUR_AWS_ACCESS_KEY_ID
+  aws_secret_access_key=YOUR_AWS_SECRET_ACCESS_KEY
+  ```
+
+For details, please refer [here](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/modules/_aws_sdk_credential_providers.html#sample-files).
+
+For **Win 10**, the path would be the following:
+
+```path
+C:\Users\[USERNAME]\.aws
+```
+
+![Win 10 file path](screenshot_aws_creds_win10.png)
+
+For **Ubuntu 20.04** on AWS EC2, the path would be the following:
+
+```path
+/home/ubuntu/.aws
+```
+
+![Ubuntu AWS EC2 file path](screenshot_aws_creds_ubuntu_ec2.png)
+
+---
+
 &copy; 2023 Sheldon T.
 
 All Rights Reserved.
