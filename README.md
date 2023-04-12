@@ -14,7 +14,7 @@ GET http://localhost:8270/api/testjson/getdata
 
 ![AWS S3 Bucket](screenshot_s3.png)
 
-### **Test JSON file is as below:**
+### **Test JSON file to read is as below:**
 
 ```json
 {
@@ -47,7 +47,7 @@ GET http://localhost:8270/api/testjson/getdata
 
 ### **AWS Credentials by Files**
 
-> This is necessary for **AWS JavaScript SDK** integration.
+> This is necessary for **AWS JavaScript SDK v3** integration.
 
 - **`~/.aws/credentials`**
   ```yaml
