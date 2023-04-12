@@ -72,7 +72,7 @@ C:\Users\[USERNAME]\.aws
 
 ![Win 10 file path](screenshot_aws_creds_win10.png)
 
-For **Ubuntu 20.04** on AWS EC2, the path would be the following:
+For **Ubuntu 20.04** on `AWS EC2`, the path would be the following:
 
 ```path
 /home/ubuntu/.aws

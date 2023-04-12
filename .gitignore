@@ -86,7 +86,7 @@ typings/
 # TernJS port file
 .tern-port
 
-### Custom Configs
+### Custom Configuration
 # by Sheldon T.
 package-lock.json
 .env
